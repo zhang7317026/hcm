@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+body{
+	font-family: "微软雅黑";
+}
+.header-back{
+	background-image: url('/hcm/img/home/header-back.jpg');
+	background-repeat: no-repeat;
+	background-size : cover;
+}

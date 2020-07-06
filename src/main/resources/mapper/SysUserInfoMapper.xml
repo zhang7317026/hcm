@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrz.mapper.SysUserInfoPOMapper" >
+  <resultMap id="BaseResultMap" type="com.zrz.entity.SysUserInfoPO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="last_login" property="lastLogin" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="token_update_time" property="tokenUpdateTime" jdbcType="INTEGER" />
+    <result column="success_times" property="successTimes" jdbcType="INTEGER" />
+    <result column="ex_am_hour" property="exAmHour" jdbcType="INTEGER" />
+    <result column="ex_am_minute" property="exAmMinute" jdbcType="INTEGER" />
+    <result column="ex_am_second" property="exAmSecond" jdbcType="INTEGER" />
+    <result column="ex_pm_hour" property="exPmHour" jdbcType="INTEGER" />
+    <result column="ex_pm_minute" property="exPmMinute" jdbcType="INTEGER" />
+    <result column="ex_pm_second" property="exPmSecond" jdbcType="INTEGER" />
+    <result column="position_x" property="positionX" jdbcType="DOUBLE" />
+    <result column="position_y" property="positionY" jdbcType="DOUBLE" />
+    <result column="position_id" property="positionId" jdbcType="VARCHAR" />
+    <result column="is_enabled" property="isEnabled" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, account, password, create_time, last_login, token, token_update_time, success_times, 
+    ex_am_hour, ex_am_minute, ex_am_second, ex_pm_hour, ex_pm_minute, ex_pm_second, position_x, 
+    position_y, position_id, is_enabled, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_user_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zrz.entity.SysUserInfoPO" >
+    insert into sys_user_info (id, name, account, 
+      password, create_time, last_login, 
+      token, token_update_time, success_times, 
+      ex_am_hour, ex_am_minute, ex_am_second, 
+      ex_pm_hour, ex_pm_minute, ex_pm_second, 
+      position_x, position_y, position_id, 
+      is_enabled, status)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{lastLogin,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{tokenUpdateTime,jdbcType=INTEGER}, #{successTimes,jdbcType=INTEGER}, 
+      #{exAmHour,jdbcType=INTEGER}, #{exAmMinute,jdbcType=INTEGER}, #{exAmSecond,jdbcType=INTEGER}, 
+      #{exPmHour,jdbcType=INTEGER}, #{exPmMinute,jdbcType=INTEGER}, #{exPmSecond,jdbcType=INTEGER}, 
+      #{positionX,jdbcType=DOUBLE}, #{positionY,jdbcType=DOUBLE}, #{positionId,jdbcType=VARCHAR}, 
+      #{isEnabled,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zrz.entity.SysUserInfoPO" >
+    insert into sys_user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastLogin != null" >
+        last_login,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="tokenUpdateTime != null" >
+        token_update_time,
+      </if>
+      <if test="successTimes != null" >
+        success_times,
+      </if>
+      <if test="exAmHour != null" >
+        ex_am_hour,
+      </if>
+      <if test="exAmMinute != null" >
+        ex_am_minute,
+      </if>
+      <if test="exAmSecond != null" >
+        ex_am_second,
+      </if>
+      <if test="exPmHour != null" >
+        ex_pm_hour,
+      </if>
+      <if test="exPmMinute != null" >
+        ex_pm_minute,
+      </if>
+      <if test="exPmSecond != null" >
+        ex_pm_second,
+      </if>
+      <if test="positionX != null" >
+        position_x,
+      </if>
+      <if test="positionY != null" >
+        position_y,
+      </if>
+      <if test="positionId != null" >
+        position_id,
+      </if>
+      <if test="isEnabled != null" >
+        is_enabled,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLogin != null" >
+        #{lastLogin,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenUpdateTime != null" >
+        #{tokenUpdateTime,jdbcType=INTEGER},
+      </if>
+      <if test="successTimes != null" >
+        #{successTimes,jdbcType=INTEGER},
+      </if>
+      <if test="exAmHour != null" >
+        #{exAmHour,jdbcType=INTEGER},
+      </if>
+      <if test="exAmMinute != null" >
+        #{exAmMinute,jdbcType=INTEGER},
+      </if>
+      <if test="exAmSecond != null" >
+        #{exAmSecond,jdbcType=INTEGER},
+      </if>
+      <if test="exPmHour != null" >
+        #{exPmHour,jdbcType=INTEGER},
+      </if>
+      <if test="exPmMinute != null" >
+        #{exPmMinute,jdbcType=INTEGER},
+      </if>
+      <if test="exPmSecond != null" >
+        #{exPmSecond,jdbcType=INTEGER},
+      </if>
+      <if test="positionX != null" >
+        #{positionX,jdbcType=DOUBLE},
+      </if>
+      <if test="positionY != null" >
+        #{positionY,jdbcType=DOUBLE},
+      </if>
+      <if test="positionId != null" >
+        #{positionId,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnabled != null" >
+        #{isEnabled,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zrz.entity.SysUserInfoPO" >
+    update sys_user_info
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLogin != null" >
+        last_login = #{lastLogin,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenUpdateTime != null" >
+        token_update_time = #{tokenUpdateTime,jdbcType=INTEGER},
+      </if>
+      <if test="successTimes != null" >
+        success_times = #{successTimes,jdbcType=INTEGER},
+      </if>
+      <if test="exAmHour != null" >
+        ex_am_hour = #{exAmHour,jdbcType=INTEGER},
+      </if>
+      <if test="exAmMinute != null" >
+        ex_am_minute = #{exAmMinute,jdbcType=INTEGER},
+      </if>
+      <if test="exAmSecond != null" >
+        ex_am_second = #{exAmSecond,jdbcType=INTEGER},
+      </if>
+      <if test="exPmHour != null" >
+        ex_pm_hour = #{exPmHour,jdbcType=INTEGER},
+      </if>
+      <if test="exPmMinute != null" >
+        ex_pm_minute = #{exPmMinute,jdbcType=INTEGER},
+      </if>
+      <if test="exPmSecond != null" >
+        ex_pm_second = #{exPmSecond,jdbcType=INTEGER},
+      </if>
+      <if test="positionX != null" >
+        position_x = #{positionX,jdbcType=DOUBLE},
+      </if>
+      <if test="positionY != null" >
+        position_y = #{positionY,jdbcType=DOUBLE},
+      </if>
+      <if test="positionId != null" >
+        position_id = #{positionId,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnabled != null" >
+        is_enabled = #{isEnabled,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zrz.entity.SysUserInfoPO" >
+    update sys_user_info
+    set name = #{name,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      last_login = #{lastLogin,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      token_update_time = #{tokenUpdateTime,jdbcType=INTEGER},
+      success_times = #{successTimes,jdbcType=INTEGER},
+      ex_am_hour = #{exAmHour,jdbcType=INTEGER},
+      ex_am_minute = #{exAmMinute,jdbcType=INTEGER},
+      ex_am_second = #{exAmSecond,jdbcType=INTEGER},
+      ex_pm_hour = #{exPmHour,jdbcType=INTEGER},
+      ex_pm_minute = #{exPmMinute,jdbcType=INTEGER},
+      ex_pm_second = #{exPmSecond,jdbcType=INTEGER},
+      position_x = #{positionX,jdbcType=DOUBLE},
+      position_y = #{positionY,jdbcType=DOUBLE},
+      position_id = #{positionId,jdbcType=VARCHAR},
+      is_enabled = #{isEnabled,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getByAccount"  resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select * from sys_user_info 
+  	where account = #{account,jdbcType=VARCHAR}
+  </select>
+  <select id="getAllEnabled" resultMap="BaseResultMap">
+  	select * from sys_user_info where is_enabled = '1'
+  </select>
+  
+</mapper>

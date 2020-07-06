@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrz.mapper.PositionListPOMapper" >
+  <resultMap id="BaseResultMap" type="com.zrz.entity.PositionListPO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="location_id" property="locationId" jdbcType="INTEGER" />
+    <result column="position_x" property="positionX" jdbcType="DOUBLE" />
+    <result column="position_y" property="positionY" jdbcType="DOUBLE" />
+    <result column="position_x_min" property="positionXMin" jdbcType="INTEGER" />
+    <result column="position_x_max" property="positionXMax" jdbcType="INTEGER" />
+    <result column="position_y_min" property="positionYMin" jdbcType="INTEGER" />
+    <result column="position_y_max" property="positionYMax" jdbcType="INTEGER" />
+    <result column="is_enabled" property="isEnabled" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, location_id, position_x, position_y, position_x_min, position_x_max, position_y_min, 
+    position_y_max, is_enabled, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from position_list
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from position_list
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zrz.entity.PositionListPO" >
+    insert into position_list (id, name, location_id, 
+      position_x, position_y, position_x_min, 
+      position_x_max, position_y_min, position_y_max, 
+      is_enabled, status)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{locationId,jdbcType=INTEGER}, 
+      #{positionX,jdbcType=DOUBLE}, #{positionY,jdbcType=DOUBLE}, #{positionXMin,jdbcType=INTEGER}, 
+      #{positionXMax,jdbcType=INTEGER}, #{positionYMin,jdbcType=INTEGER}, #{positionYMax,jdbcType=INTEGER}, 
+      #{isEnabled,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zrz.entity.PositionListPO" >
+    insert into position_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="locationId != null" >
+        location_id,
+      </if>
+      <if test="positionX != null" >
+        position_x,
+      </if>
+      <if test="positionY != null" >
+        position_y,
+      </if>
+      <if test="positionXMin != null" >
+        position_x_min,
+      </if>
+      <if test="positionXMax != null" >
+        position_x_max,
+      </if>
+      <if test="positionYMin != null" >
+        position_y_min,
+      </if>
+      <if test="positionYMax != null" >
+        position_y_max,
+      </if>
+      <if test="isEnabled != null" >
+        is_enabled,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="locationId != null" >
+        #{locationId,jdbcType=INTEGER},
+      </if>
+      <if test="positionX != null" >
+        #{positionX,jdbcType=DOUBLE},
+      </if>
+      <if test="positionY != null" >
+        #{positionY,jdbcType=DOUBLE},
+      </if>
+      <if test="positionXMin != null" >
+        #{positionXMin,jdbcType=INTEGER},
+      </if>
+      <if test="positionXMax != null" >
+        #{positionXMax,jdbcType=INTEGER},
+      </if>
+      <if test="positionYMin != null" >
+        #{positionYMin,jdbcType=INTEGER},
+      </if>
+      <if test="positionYMax != null" >
+        #{positionYMax,jdbcType=INTEGER},
+      </if>
+      <if test="isEnabled != null" >
+        #{isEnabled,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zrz.entity.PositionListPO" >
+    update position_list
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="locationId != null" >
+        location_id = #{locationId,jdbcType=INTEGER},
+      </if>
+      <if test="positionX != null" >
+        position_x = #{positionX,jdbcType=DOUBLE},
+      </if>
+      <if test="positionY != null" >
+        position_y = #{positionY,jdbcType=DOUBLE},
+      </if>
+      <if test="positionXMin != null" >
+        position_x_min = #{positionXMin,jdbcType=INTEGER},
+      </if>
+      <if test="positionXMax != null" >
+        position_x_max = #{positionXMax,jdbcType=INTEGER},
+      </if>
+      <if test="positionYMin != null" >
+        position_y_min = #{positionYMin,jdbcType=INTEGER},
+      </if>
+      <if test="positionYMax != null" >
+        position_y_max = #{positionYMax,jdbcType=INTEGER},
+      </if>
+      <if test="isEnabled != null" >
+        is_enabled = #{isEnabled,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zrz.entity.PositionListPO" >
+    update position_list
+    set name = #{name,jdbcType=VARCHAR},
+      location_id = #{locationId,jdbcType=INTEGER},
+      position_x = #{positionX,jdbcType=DOUBLE},
+      position_y = #{positionY,jdbcType=DOUBLE},
+      position_x_min = #{positionXMin,jdbcType=INTEGER},
+      position_x_max = #{positionXMax,jdbcType=INTEGER},
+      position_y_min = #{positionYMin,jdbcType=INTEGER},
+      position_y_max = #{positionYMax,jdbcType=INTEGER},
+      is_enabled = #{isEnabled,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <select id="getAllList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from position_list
+  </select>
+  
+</mapper>
